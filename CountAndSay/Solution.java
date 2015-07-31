@@ -1,8 +1,11 @@
 public class Solution {
-    public String countAndSay(int n) {
+    public static void main(String[] args){
+        
+    }
+    public String countAndSay(int n ) {
         if(n==0) return "";
         
-        String prev = "1";
+        String prev = "1" ;
         
         for(int i=1; i<n; i++){
             String res = new String();
