@@ -1,6 +1,6 @@
 public class Solution {
     public static void main(String[] args){
-        
+        //test master node 
     }
     public String countAndSay(int n ) {
         if(n==0) return "";
