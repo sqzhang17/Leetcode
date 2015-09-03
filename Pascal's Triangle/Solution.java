@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*; 
 
 public class Solution {
 	public static void main(String[] args){
@@ -30,7 +30,8 @@ public class Solution {
         			temp.add(prev.get(j-1)+prev.get(j));
         		}
         	}
-
+        
+        
         	//add temp to res
         	res.add(temp);
         }
