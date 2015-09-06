@@ -1,0 +1,45 @@
+public class Solution {
+	public static void main(String[] args){
+		Solution s = new Solution();
+		s.test1();
+		s.test2();
+		s.test3();
+	}
+
+    public int findPeakElement(int[] nums) {
+        if(nums == null || nums.length<=1) return 0;
+
+        for(int i=0;i<nums.length;i++){
+        	if(i==0){
+        		if(nums[i]>nums[i+1]){
+        			return 0;
+        		}
+        	}else if(i==nums.length-1){
+        		if(nums[nums.length-1]>nums[nums.length-2]){
+        			return nums.length-1;
+        		}
+        	}else{
+        		if(nums[i]>nums[i-1] && nums[i]>nums[i+1]){
+        			return i;
+        		}
+        	}
+        }
+
+        return 0;
+    }
+
+    public void test1(){
+    	int[] a = {1,2,3,1};
+    	System.out.println(findPeakElement(a));
+    }
+
+    public void test2(){
+    	int[] a = {1,2,3,4};
+    	System.out.println(findPeakElement(a));
+    }
+
+    public void test3(){
+    	int[] a = {1,0,3,1};
+    	System.out.println(findPeakElement(a));
+    }
+}
