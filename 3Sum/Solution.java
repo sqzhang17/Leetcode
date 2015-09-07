@@ -44,4 +44,35 @@ public class Solution {
     	int[] a = {-1, 0, 1, 2, -1, -4};
     	System.out.println(threeSum(a));
     }
+
+
+    public List<List<Integer>> threeSum_OJ(int[] num) {
+    	List<List<Integer>> res = new LinkedList<>(); 
+    	
+        if(num==null || num.length<3) return res;
+
+        Arrays.sort(num);
+
+	    for (int i = 0; i < num.length-2; i++) {
+	        if (i == 0 || (i > 0 && num[i] != num[i-1])) { //void duplicate triplet when traverse the array
+	            int lo = i+1, hi = num.length-1, sum = 0 - num[i];
+	            while (lo < hi) {
+	                if (num[lo] + num[hi] == sum) {
+	                    res.add(Arrays.asList(num[i], num[lo], num[hi]));
+	                    while (lo < hi && num[lo] == num[lo+1]) lo++; //void duplicate when moving left/right pointer
+	                    while (lo < hi && num[hi] == num[hi-1]) hi--;
+	                    lo++; hi--;
+	                } else if (num[lo] + num[hi] < sum) {
+	                    while (lo < hi && num[lo] == num[lo+1]) lo++;
+	                    lo++;
+	                } else {
+	                    while (lo < hi && num[hi] == num[hi-1]) hi--;
+	                    hi--;
+	                }
+	            }
+	        }
+	    }
+
+        return res;
+    }
 }
