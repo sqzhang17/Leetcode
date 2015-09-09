@@ -8,10 +8,8 @@
 
 public class Solution {
     public ListNode sortList(ListNode head) {
-    //base case:
      if(head==null || head.next==null) return head;
 
-     //step 1: cut the list to two halves
      ListNode f = head;
      ListNode s = head; 
 
@@ -24,11 +22,9 @@ public class Solution {
 
      s.next=null;
 
-     //sort each half
      head = sortList(head);
      shead = sortList(shead);
 
-     //merge the two halves
      return mergeTwoLists(head, shead);
 
 
@@ -45,12 +41,12 @@ public class Solution {
     	while(ln1!=null && ln2!=null){
     		if(ln1.val>ln2.val){
     			pointer.next=ln2;
+    			pointer=pointer.next;
     			ln2=ln2.next;
-    			pointer=ln2;
     		}else{
     			pointer.next=ln1;
+    			pointer=pointer.next;
     			ln1=ln1.next;
-    			pointer=ln1;
     		}
     	}
 
@@ -58,6 +54,7 @@ public class Solution {
     	if(ln2!=null) pointer.next=ln2;
 
     	return newHeadPrev.next;
+    }
     }
 
     public static void main(String[] args){
