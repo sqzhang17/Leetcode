@@ -3,7 +3,8 @@ import java.util.*;
 public class Solution {
 	public static void main(String[] args){
 		Solution s = new Solution();
-		s.test();
+		s.test1();
+		s.test2();
 	}
 	//wrong solution:
 	//{"4", "13", "5", "/", "+"}
@@ -11,43 +12,36 @@ public class Solution {
     public int evalRPN(String[] tokens) {
         if(tokens==null) return 0;
 
-        Queue<String> nums = new LinkedList<String>();
-        Queue<String> operators = new LinkedList<String>();
-
+        Stack<Integer> nums = new Stack<Integer>();
+        
         for(String s:tokens){
-        	if("+-*/".indexOf(s)==-1){
-        		nums.offer(s);
+        	if(s.equals("+")){
+        		nums.push(nums.pop()+nums.pop());
+        	}else if(s.equals("-")){
+        		int a = nums.pop();
+        		int b = nums.pop();
+        		nums.push(b-a);
+        	}else if(s.equals("*")){
+        		nums.push(nums.pop()*nums.pop());
+        	}else if (s.equals("/")){
+        		int a = nums.pop();
+        		int b = nums.pop();
+        		nums.push(b/a);
         	}else{
-        		operators.offer(s);
+        		nums.push(Integer.valueOf(s));
         	}
         }
 
-        while(operators.size()!=0){
-        	int num1 = Integer.valueOf(nums.poll());
-        	int num2 = Integer.valueOf(nums.poll());
-        	String op = operators.poll();
-
-        	//System.out.println(num1+", "+num2+", "+op);
-        	int res=0;
-        	if(op.equals("+")){
-        		res=num1+num2;
-        	}else if(op.equals("-")){
-        		res=num1-num2;
-        	}else if(op.equals("*")){
-        		res=num1*num2;
-        	}else{
-        		res=num1/num2;
-        	}
-
-        	nums.offer(res+"");
-        }
-
-
-        return Integer.valueOf(nums.poll());
+        return Integer.valueOf(nums.pop());
     }
 
-    public void test(){
+    public void test1(){
     	String[] s = {"2", "1", "+", "3", "*"};
+    	System.out.println(evalRPN(s));
+    }
+
+    public void test2(){
+    	String[] s ={"4", "13", "5", "/", "+"};
     	System.out.println(evalRPN(s));
     }
 }
