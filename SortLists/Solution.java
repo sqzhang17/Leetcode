@@ -8,8 +8,10 @@
 
 public class Solution {
     public ListNode sortList(ListNode head) {
+     //base case:
      if(head==null || head.next==null) return head;
 
+     //step 1: cut the list to two halves
      ListNode f = head;
      ListNode s = head; 
 
@@ -22,9 +24,11 @@ public class Solution {
 
      s.next=null;
 
+     //sort each half
      head = sortList(head);
      shead = sortList(shead);
 
+     //merge the two halves
      return mergeTwoLists(head, shead);
 
 
