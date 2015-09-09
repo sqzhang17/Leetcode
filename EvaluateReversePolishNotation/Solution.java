@@ -6,9 +6,7 @@ public class Solution {
 		s.test1();
 		s.test2();
 	}
-	//wrong solution:
-	//{"4", "13", "5", "/", "+"}
-	// 13/5+4 should be the order
+
     public int evalRPN(String[] tokens) {
         if(tokens==null) return 0;
 
