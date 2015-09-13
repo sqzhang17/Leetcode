@@ -16,9 +16,9 @@ public class Solution {
         		return nums[l];
         	}else{//nums[l]>nums[r]
         		if(nums[m]<nums[r]){
-        			r=m-1; 
+        			r=m; //NOT r=m-1; -> m still can be the min 
         		}else if(nums[m]>nums[l]){
-        			l=m+1;
+        			l=m; //NOT l=m+1; -> m still can be the min
         		}else{
         			return nums[r];
         		}
