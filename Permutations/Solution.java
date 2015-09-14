@@ -5,8 +5,11 @@ public class Solution {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if(nums==null|| nums.length==0) return res;
 
+        //loop thru each element
         for(int i=0; i<nums.length;i++){
         	int tempInt = nums[i];
+
+        	//memory the size of queue
         	int ls = res.size();
 
         	if(ls==0){//res is empty
@@ -14,14 +17,16 @@ public class Solution {
         		tempAL_first.add(tempInt);
         		res.add(tempAL_first);
         	}else{//res is NOT empty
+        		//for all the list within res
 	        	for(int j=0;j<ls;j++){
 	        		List<Integer> tempAL_removed = res.remove(0);
 
+	        		//for all the position of each list
 	        		for(int k=0;k<=tempAL_removed.size();k++){
+	        			//the new added list must be initilize HERE each time
 	        			ArrayList<Integer> tempAL_added = new ArrayList<Integer>();
 	        			tempAL_added.addAll(tempAL_removed);
 	        			tempAL_added.add(k,tempInt);
-	        			//System.out.println(tempAL_added);
 	        			res.add(tempAL_added);
 	        		}
 	        	}
