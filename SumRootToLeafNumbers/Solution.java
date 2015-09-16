@@ -1,4 +1,10 @@
-
+/*
+key point:
+	1.	in sumR method x is the sum up to root's parent;
+	2.	in sumR method, "root=null then return 0"
+		can be replaced by the if clause in the comment 
+		the if clause way is faster!!!!
+*/
 
 public class Solution {
 	public static void main(String[] args){
@@ -17,6 +23,13 @@ public class Solution {
         int val = 0;
         val += sumR(root.left, 10 * x + root.val);
         val += sumR(root.right, 10 * x + root.val);
+
+        /*
+        if (root.left != null)
+            val += sumR(root.left, 10 * x + root.val);
+        if (root.right != null)
+            val += sumR(root.right, 10 * x + root.val);
+         */
         return val;
     }
 }
