@@ -4,10 +4,13 @@ public class Solution {
         if(matrix == null || matrix.length < 1 || matrix[0].length <1) {
                     return false;
         }
-        
+
+        //initial the pointer 
+        // column and row
         int col = matrix[0].length-1;
         int row = 0;
-        
+
+        //start the top right corner of the matrix
         while(col >= 0 && row <= matrix.length-1) {
             if(target == matrix[row][col]) {
                 return true;
