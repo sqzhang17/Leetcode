@@ -13,12 +13,15 @@ public class Solution {
         		//current sum
         		int csum = nums[i]+nums[lo]+nums[hi];
 
+        		//meet smallest, 0, return directly
         		if(csum-target==0) return csum;
 
+        		//update global min
         		if(Math.abs(csum-target)<Math.abs(gmin-target)){
         			gmin = csum;
         		}
 
+        		//update hi and lo pointer
         		if(csum>target){
         			hi--;
         		}else{
