@@ -3,6 +3,7 @@ public class Solution {
 	    int n=num.length;
 	    if(n<2) return;
 
+	    //locate the reversely sorted stopped point
 	    int index=n-1;        
 	    while(index>0){
 	        if(num[index-1]<num[index])
@@ -10,19 +11,27 @@ public class Solution {
 	        index--;
 	    }
 
+	    //not totally reversely sorted
 	    if(index!=0){
 	        int val=num[index-1];
 	        int j=n-1;
+
+	        //find the first element larger than num[index]
 	        while(j>=index){
 	            if(num[j]>val)
 	                break;
 	            j--;
 	        }
+
 	        swap(num,j,index-1);
+
+	        //reverse the second half
 	        reverseSort(num,index,n-1);
+
 	        return;
 	    }
 
+	    //if totally reversely sorted, reverse the entire array
 	    reverseSort(num,0,n-1);
 	}
 
