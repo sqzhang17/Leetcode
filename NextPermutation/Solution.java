@@ -23,6 +23,7 @@ public class Solution {
 	            j--;
 	        }
 
+	        //swap elements
 	        swap(num,j,index-1);
 
 	        //reverse the second half
