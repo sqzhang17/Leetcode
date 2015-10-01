@@ -12,6 +12,7 @@ public class Solution {
         		num/=10;
         	}
 
+            //update num
         	num=sum;
         }
 
