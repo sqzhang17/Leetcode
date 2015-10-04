@@ -5,31 +5,33 @@ public class Solution{
 		boolean[] hasLeaf = new boolean[len];
 
 		int earliest =-1;
-		int farest = perJump;
+		int farest = 0;//
 
 		for(int i=0;i<a.length;i++){
 			int currTime = i;
 			int currLeafPos = a[i];
 
 			if(hasLeaf[currLeafPos]) continue;
-
+			//System.out.println(currLeafPos+"....");
 			hasLeaf[currLeafPos]=true;
 
-			if(farest<currLeafPos) continue;
+			//System.out.println(farest+","+perJump+", "+currLeafPos);
+			if(farest+perJump<currLeafPos || currLeafPos<farest) continue;//
 
 			int jumpCnt=1;
 
 			while(jumpCnt<=perJump){
-				//System.out.print(currLeafPos+", "+jumpCnt);
+				//System.out.println(currLeafPos+", "+jumpCnt);
 				//sop(hasLeaf);
 				//System.out.println(currLeafPos+jumpCnt+",");
-				if(currLeafPos+jumpCnt>=len) return currTime;
+				//System.out.println("++++");
 
-				if(hasLeaf[currLeafPos+jumpCnt]){
-					currLeafPos=currLeafPos+jumpCnt;
+				if(farest+perJump>=len) return currTime;
+
+				if(hasLeaf[farest+jumpCnt]){
+					farest=Math.max(farest,farest+jumpCnt);
 					jumpCnt=1;
 				}else{
-					farest=Math.max(farest,currLeafPos+jumpCnt);
 					jumpCnt++;
 				}
 			}
